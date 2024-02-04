@@ -9,6 +9,33 @@
 #include "raylib.h"
 #include <time.h> // Include for clock_gettime
 
+
+void draw_guides(void)
+{
+    Vector2 size = {10.f, 10.f};
+    Vector2 topLeft = {10.f, 10.f};
+    Vector2 topRight = {(GetScreenWidth()) - 20.f, 10.f};
+    Vector2 bottomLeft = {10.f, (GetScreenHeight()) - 20.f};
+    Vector2 bottomRight = {(GetScreenWidth()) - 20.f, (GetScreenHeight()) - 20.f};
+
+    DrawRectangleV(topLeft, size, RED);
+    DrawRectangleV(topRight, size, BLUE);
+    DrawRectangleV(bottomLeft, size, BLUE);
+    DrawRectangleV(bottomRight, size, RED);
+
+    Vector2 points[4] = {
+        {SCREEN_CENTER_X - SCREEN_CENTER_X / 2.f, SCREEN_CENTER_Y - SCREEN_CENTER_Y / 2.f},
+        {SCREEN_CENTER_X + SCREEN_CENTER_X / 2.f, SCREEN_CENTER_Y - SCREEN_CENTER_Y / 2.f},
+        {SCREEN_CENTER_X - SCREEN_CENTER_X / 2.f, SCREEN_CENTER_Y + SCREEN_CENTER_Y / 2.f},
+        {SCREEN_CENTER_X + SCREEN_CENTER_X / 2.f, SCREEN_CENTER_Y + SCREEN_CENTER_Y / 2.f},
+    };
+
+    DrawLineV(points[0], points[1], BLACK);
+    DrawLineV(points[0], points[2], BLACK);
+    DrawLineV(points[1], points[3], BLACK);
+    DrawLineV(points[2], points[3], BLACK);
+}
+
 int main(void)
 {
     SetTraceLogLevel(LOG_WARNING);
@@ -20,9 +47,10 @@ int main(void)
     double accumulator = 0.0;
 
     Player player;
+    init_player(&player);
 
     Camera2D camera = { 0 };
-    camera.target = player.center;
+    camera.target = player.position;
     camera.offset = (Vector2){ GetScreenWidth()/2.f, GetScreenHeight()/2.f };
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
@@ -39,8 +67,11 @@ int main(void)
         prev_time_point = curr_time_point;
         accumulator += frame_time;
 
+        control_player(&player);
+
         while (accumulator >= dt)
         {
+            update_player(&player, dt);
             accumulator -= dt;
         }
 
@@ -48,6 +79,7 @@ int main(void)
 
             ClearBackground(RAYWHITE);
             draw_guides();
+            draw_player(player);
 
         EndDrawing();
     }
