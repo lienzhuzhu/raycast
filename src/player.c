@@ -46,8 +46,11 @@ void control_player(Player *player)
 
 void update_player(Player *player, double dt)
 {
-    player->position.x += player->velocity.x * dt;
-    player->position.y += player->velocity.y * dt;
+    //player->position.x += player->velocity.x * dt;
+    //player->position.y += player->velocity.y * dt;
+
+    player->position.x = GetMouseX();
+    player->position.y = GetMouseY();
 }
 
 void draw_player(Player player)

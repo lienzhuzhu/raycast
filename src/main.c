@@ -67,7 +67,7 @@ int main(void)
         prev_time_point = curr_time_point;
         accumulator += frame_time;
 
-        control_player(&player);
+        //control_player(&player);
 
         while (accumulator >= dt)
         {
