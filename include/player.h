@@ -9,29 +9,12 @@
 
 
 #include <raylib.h>
-
-
-/*
-// Ray, ray for raycasting
-typedef struct Ray {
-    Vector3 position;       // Ray position (origin)
-    Vector3 direction;      // Ray direction
-} Ray;
-
-// RayCollision, ray hit information
-typedef struct RayCollision {
-    bool hit;               // Did the ray hit something?
-    float distance;         // Distance to the nearest hit
-    Vector3 point;          // Point of the nearest hit
-    Vector3 normal;         // Surface normal of hit
-} RayCollision;
-*/
+#include "laser.h"
 
 
 typedef struct Player {
-    Ray laser;
+    Laser *lasers;
     Vector2 position;
-    float size;
 } Player;
 
 

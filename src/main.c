@@ -19,6 +19,14 @@ int main(void)
     clock_gettime(CLOCK_MONOTONIC, &prev_time_point); // Get current time
     double accumulator = 0.0;
 
+    Player player;
+
+    Camera2D camera = { 0 };
+    camera.target = player.center;
+    camera.offset = (Vector2){ GetScreenWidth()/2.f, GetScreenHeight()/2.f };
+    camera.rotation = 0.0f;
+    camera.zoom = 1.0f;
+
     while (!WindowShouldClose())
     {
         struct timespec curr_time_point;
