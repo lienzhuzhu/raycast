@@ -40,6 +40,7 @@ int main(void)
 {
     SetTraceLogLevel(LOG_WARNING);
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raycasting");
+    HideCursor();
 
     double dt = 1.f / TARGET_FPS;
     struct timespec prev_time_point;
