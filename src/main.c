@@ -76,11 +76,18 @@ int main(void)
             accumulator -= dt;
         }
 
+        //camera.target = player.position;
+
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
+
+            //BeginMode2D(camera);
+
             draw_guides();
             draw_player(player);
+
+            //EndMode2D();
 
         EndDrawing();
     }
