@@ -7,6 +7,7 @@
 #include "player.h"
 #include "global.h"
 #include "raylib.h"
+#include "wall.h"
 #include <time.h> // Include for clock_gettime
 
 
@@ -14,21 +15,30 @@ int main(void)
 {
     SetTraceLogLevel(LOG_WARNING);
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raycasting");
-    HideCursor();
+    //HideCursor();
 
     double dt = 1.f / TARGET_FPS;
     struct timespec prev_time_point;
     clock_gettime(CLOCK_MONOTONIC, &prev_time_point); // Get current time
     double accumulator = 0.0;
 
+
     Player player;
     init_player(&player);
+
+    Wall w = {
+        .start = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y - 50},
+        .end = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y + 50},
+        .thiccness = 6.f,
+        .color = RAYWHITE
+    };
 
     Camera2D camera = { 0 };
     camera.target = player.position;
     camera.offset = (Vector2){ GetScreenWidth()/2.f, GetScreenHeight()/2.f };
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
+
 
     while (!WindowShouldClose())
     {
@@ -42,7 +52,7 @@ int main(void)
         prev_time_point = curr_time_point;
         accumulator += frame_time;
 
-        //control_player(&player);
+        control_player(&player);
 
         while (accumulator >= dt)
         {
@@ -54,7 +64,7 @@ int main(void)
 
         BeginDrawing();
 
-            ClearBackground(DARKGRAY);
+            ClearBackground(BLACK);
 
             //BeginMode2D(camera);
 
