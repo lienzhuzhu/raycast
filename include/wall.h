@@ -12,7 +12,10 @@
 
 
 typedef struct Wall {
-    Rectangle body;
+    Vector2 start;
+    Vector2 end;
+    float thiccness;
+    Color color;
 } Wall;
 
 void update_wall(Wall *wall);

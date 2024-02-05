@@ -20,5 +20,7 @@
 #define SCREEN_CENTER_X   GetScreenWidth()/2.f
 #define SCREEN_CENTER_Y   GetScreenHeight()/2.f
 
+void draw_guides(void);
+
 
 #endif // !GLOBAL_H

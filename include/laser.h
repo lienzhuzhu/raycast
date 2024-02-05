@@ -11,13 +11,11 @@
 #include <raylib.h>
 
 
-// Laser, ray for 2d raycasting
 typedef struct Laser {
     Vector2 position;
     Vector2 direction;
 } Laser;
 
-// LaserCollision, Laser hit information
 typedef struct LaserCollision {
     bool hit;
     float distance;
