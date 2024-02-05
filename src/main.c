@@ -70,11 +70,14 @@ int main(void)
 
             draw_guides();
             draw_player(player);
+            draw_wall(w);
 
             //EndMode2D();
 
         EndDrawing();
     }
+
+    delete_player(&player);
 
     CloseWindow();
 

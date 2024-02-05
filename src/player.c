@@ -64,7 +64,6 @@ void update_player(Player *player, double dt)
 void draw_player(Player player)
 {
     draw_lasers(&player);
-    printf("%f %f\n", player.lasers->position.x, player.lasers->position.y );
     DrawCircleV(player.position, player.size, player.color);
 }
 
@@ -77,4 +76,12 @@ void draw_lasers(Player *player)
 {
     Laser laser = *(player->lasers);
     draw_laser(laser);
+}
+
+void delete_player(Player *player)
+{
+    if (player->lasers != NULL) {
+        free(player->lasers);
+        player->lasers = NULL;
+    }
 }

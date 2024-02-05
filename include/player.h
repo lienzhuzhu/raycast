@@ -24,6 +24,7 @@ void init_player(Player *player);
 void control_player(Player *player);
 void update_player(Player *player, double dt);
 void draw_player(Player player);
+void delete_player(Player *player);
 
 void update_lasers(Player *player);
 void draw_lasers(Player *player);
