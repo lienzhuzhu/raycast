@@ -23,7 +23,7 @@ typedef struct LaserCollision {
     Vector2 normal;
 } LaserCollision;
 
-void update_laser(Laser *laser);
+void update_laser(Laser *laser, Vector2 position);
 void draw_laser(Laser laser);
 
 

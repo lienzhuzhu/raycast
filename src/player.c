@@ -4,26 +4,30 @@
  */
 
 
-#include <stdio.h>
 #include "player.h"
 #include "global.h"
 #include "raylib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #define SPEED   100
 
 
 void init_player(Player *player)
 {
-    Laser laser = {
-        .position = { player->position.x, player->position.y },
-        .direction = { GetMouseX(), GetMouseY() }
-    };
-
-    player->lasers = NULL;
     player->position = (Vector2){SCREEN_CENTER_X, SCREEN_CENTER_Y};
     player->velocity = (Vector2){0.f, 0.f};
     player->size = 10.f;
     player->color = RAYWHITE;
+
+    Laser* laser = malloc(sizeof(Laser));
+    if (laser != NULL) {
+        laser->position = player->position;
+        laser->direction = (Vector2){ GetMouseX(), GetMouseY() };
+        player->lasers = laser;
+    } else {
+        player->lasers = NULL;
+    }
 }
 
 void control_player(Player *player)
@@ -54,11 +58,23 @@ void update_player(Player *player, double dt)
     player->position.x += player->velocity.x * dt;
     player->position.y += player->velocity.y * dt;
 
-    //player->position.x = GetMouseX();
-    //player->position.y = GetMouseY();
+    update_lasers(player);
 }
 
 void draw_player(Player player)
 {
+    draw_lasers(&player);
+    printf("%f %f\n", player.lasers->position.x, player.lasers->position.y );
     DrawCircleV(player.position, player.size, player.color);
+}
+
+void update_lasers(Player *player)
+{
+    update_laser(player->lasers, player->position);
+}
+
+void draw_lasers(Player *player)
+{
+    Laser laser = *(player->lasers);
+    draw_laser(laser);
 }
