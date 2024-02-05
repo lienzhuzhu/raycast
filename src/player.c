@@ -7,6 +7,7 @@
 #include "player.h"
 #include "global.h"
 #include "raylib.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -30,26 +31,30 @@ void init_player(Player *player)
     }
 }
 
-void control_player(Player *player)
-{
+void control_player(Player *player) {
+    player->velocity.x = 0.f;
+    player->velocity.y = 0.f;
+
     if (IsKeyDown(KEY_W)) {
-        player->velocity.y = -SPEED;
+        player->velocity.y -= SPEED; // Move up
     }
     if (IsKeyDown(KEY_S)) {
-        player->velocity.y = SPEED;
+        player->velocity.y += SPEED; // Move down
     }
-    if (IsKeyUp(KEY_W) && IsKeyUp(KEY_S)) {
-        player->velocity.y = 0.f;
-    }
-
     if (IsKeyDown(KEY_A)) {
-        player->velocity.x = -SPEED;
+        player->velocity.x -= SPEED; // Move left
     }
     if (IsKeyDown(KEY_D)) {
-        player->velocity.x = SPEED;
+        player->velocity.x += SPEED; // Move right
     }
-    if (IsKeyUp(KEY_A) && IsKeyUp(KEY_D)) {
-        player->velocity.x = 0.f;
+
+    // Normalize velocity if moving diagonally to maintain constant speed
+    if (player->velocity.x != 0.f && player->velocity.y != 0.f) {
+        float norm = sqrt(player->velocity.x * player->velocity.x + player->velocity.y * player->velocity.y);
+        player->velocity.x /= norm;
+        player->velocity.y /= norm;
+        player->velocity.x *= SPEED;
+        player->velocity.y *= SPEED;
     }
 }
 
