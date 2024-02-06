@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SPEED   100
+#define SPEED   200
 
 
 void init_player(Player *player)

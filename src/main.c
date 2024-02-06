@@ -33,12 +33,6 @@ int main(void)
         .color = RAYWHITE
     };
 
-    Camera2D camera = { 0 };
-    camera.target = player.position;
-    camera.offset = (Vector2){ GetScreenWidth()/2.f, GetScreenHeight()/2.f };
-    camera.rotation = 0.0f;
-    camera.zoom = 1.0f;
-
 
     while (!WindowShouldClose())
     {
@@ -60,19 +54,13 @@ int main(void)
             accumulator -= dt;
         }
 
-        //camera.target = player.position;
-
         BeginDrawing();
 
             ClearBackground(BLACK);
 
-            //BeginMode2D(camera);
-
             draw_guides();
             draw_player(player);
             draw_wall(w);
-
-            //EndMode2D();
 
         EndDrawing();
     }
