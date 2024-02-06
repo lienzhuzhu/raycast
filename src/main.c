@@ -6,7 +6,6 @@
 
 #include "player.h"
 #include "global.h"
-#include "raylib.h"
 #include "wall.h"
 #include <time.h> // Include for clock_gettime
 
@@ -30,7 +29,7 @@ int main(void)
         .start = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y - 50},
         .end = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y + 50},
         .thiccness = 6.f,
-        .color = RAYWHITE
+        .color = LIGHTGRAY
     };
 
 
@@ -51,6 +50,7 @@ int main(void)
         while (accumulator >= dt)
         {
             update_player(&player, dt);
+            update_lasers(&player);
             accumulator -= dt;
         }
 
@@ -59,6 +59,7 @@ int main(void)
             ClearBackground(BLACK);
 
             draw_guides();
+            draw_lasers(&player);
             draw_player(player);
             draw_wall(w);
 

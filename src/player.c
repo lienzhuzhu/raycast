@@ -19,7 +19,7 @@ void init_player(Player *player)
     player->position = (Vector2){SCREEN_CENTER_X, SCREEN_CENTER_Y};
     player->velocity = (Vector2){0.f, 0.f};
     player->size = 10.f;
-    player->color = RAYWHITE;
+    player->color = LIGHTGRAY;
 
     Laser* laser = malloc(sizeof(Laser));
     if (laser != NULL) {
@@ -36,16 +36,16 @@ void control_player(Player *player) {
     player->velocity.y = 0.f;
 
     if (IsKeyDown(KEY_W)) {
-        player->velocity.y -= SPEED; // Move up
+        player->velocity.y -= SPEED;
     }
     if (IsKeyDown(KEY_S)) {
-        player->velocity.y += SPEED; // Move down
+        player->velocity.y += SPEED;
     }
     if (IsKeyDown(KEY_A)) {
-        player->velocity.x -= SPEED; // Move left
+        player->velocity.x -= SPEED;
     }
     if (IsKeyDown(KEY_D)) {
-        player->velocity.x += SPEED; // Move right
+        player->velocity.x += SPEED;
     }
 
     // Normalize velocity if moving diagonally to maintain constant speed
@@ -62,13 +62,10 @@ void update_player(Player *player, double dt)
 {
     player->position.x += player->velocity.x * dt;
     player->position.y += player->velocity.y * dt;
-
-    update_lasers(player);
 }
 
 void draw_player(Player player)
 {
-    draw_lasers(&player);
     DrawCircleV(player.position, player.size, player.color);
 }
 

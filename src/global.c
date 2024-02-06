@@ -27,9 +27,9 @@ void draw_guides(void)
         {SCREEN_CENTER_X + SCREEN_CENTER_X / 2.f, SCREEN_CENTER_Y + SCREEN_CENTER_Y / 2.f},
     };
 
-    DrawLineV(points[0], points[1], RAYWHITE);
-    DrawLineV(points[0], points[2], RAYWHITE);
-    DrawLineV(points[1], points[3], RAYWHITE);
-    DrawLineV(points[2], points[3], RAYWHITE);
+    DrawLineV(points[0], points[1], LIGHTGRAY);
+    DrawLineV(points[0], points[2], LIGHTGRAY);
+    DrawLineV(points[1], points[3], LIGHTGRAY);
+    DrawLineV(points[2], points[3], LIGHTGRAY);
 }
 

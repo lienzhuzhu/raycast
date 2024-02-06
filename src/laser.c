@@ -23,10 +23,9 @@ void update_laser(Laser *laser, Vector2 position)
         .y = GetMouseY()
     };
     laser->direction = direction;
-    //laser->direction = Vector2Normalize(direction);
 }
 
 void draw_laser(Laser laser)
 {
-    DrawLineV(laser.position, laser.direction, RAYWHITE);
+    DrawLineV(laser.position, laser.direction, LIGHTGRAY);
 }
