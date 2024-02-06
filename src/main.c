@@ -14,7 +14,7 @@ int main(void)
 {
     SetTraceLogLevel(LOG_WARNING);
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raycasting");
-    //HideCursor();
+    HideCursor();
 
     double dt = 1.f / TARGET_FPS;
     struct timespec prev_time_point;
@@ -26,8 +26,8 @@ int main(void)
     init_player(&player);
 
     Wall w = {
-        .start = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y - 50},
-        .end = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y + 50},
+        .start = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y - 100},
+        .end = {SCREEN_CENTER_X + 120, SCREEN_CENTER_Y + 80},
         .thiccness = 6.f,
         .color = LIGHTGRAY
     };
@@ -59,9 +59,9 @@ int main(void)
             ClearBackground(BLACK);
 
             draw_guides();
-            draw_lasers(&player);
-            draw_player(player);
             draw_wall(w);
+            draw_lasers(&player, &w);
+            draw_player(player);
 
         EndDrawing();
     }

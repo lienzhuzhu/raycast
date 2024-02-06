@@ -10,6 +10,7 @@
 
 #include <raylib.h>
 #include "laser.h"
+#include "wall.h"
 
 
 typedef struct Player {
@@ -27,7 +28,7 @@ void draw_player(Player player);
 void delete_player(Player *player);
 
 void update_lasers(Player *player);
-void draw_lasers(Player *player);
+void draw_lasers(Player *player, Wall *wall);
 
 
 #endif // !PLAYER_H

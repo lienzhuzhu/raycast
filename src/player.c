@@ -18,7 +18,7 @@ void init_player(Player *player)
 {
     player->position = (Vector2){SCREEN_CENTER_X, SCREEN_CENTER_Y};
     player->velocity = (Vector2){0.f, 0.f};
-    player->size = 10.f;
+    player->size = 15.f;
     player->color = LIGHTGRAY;
 
     Laser* laser = malloc(sizeof(Laser));
@@ -74,10 +74,10 @@ void update_lasers(Player *player)
     update_laser(player->lasers, player->position);
 }
 
-void draw_lasers(Player *player)
+void draw_lasers(Player *player, Wall *wall)
 {
     Laser laser = *(player->lasers);
-    draw_laser(laser);
+    draw_laser(laser, *wall);
 }
 
 void delete_player(Player *player)

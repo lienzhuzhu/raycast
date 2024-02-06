@@ -8,24 +8,32 @@
 #include <raymath.h>
 
 #include "laser.h"
+#include "checks.h"
 
 
 void update_laser(Laser *laser, Vector2 position)
 {
     laser->position = position;
 
-    //Vector2 direction = {
-    //    .x = GetMouseX() - laser->position.x,
-    //    .y = GetMouseY() - laser->position.y
-    //};
     Vector2 direction = {
-        .x = GetMouseX(),
-        .y = GetMouseY()
+        .x = GetMouseX() - laser->position.x,
+        .y = GetMouseY() - laser->position.y
     };
-    laser->direction = direction;
+    
+    laser->direction = Vector2Normalize(direction);
 }
 
-void draw_laser(Laser laser)
+void draw_laser(Laser laser, Wall wall)
 {
-    DrawLineV(laser.position, laser.direction, LIGHTGRAY);
+    Vector2 end = {
+        .x = laser.position.x + laser.direction.x * 50,
+        .y = laser.position.y + laser.direction.y * 50
+    };
+    LaserCollision collision = get_collision_with_wall(&laser, &wall);
+
+    if (collision.hit) {
+        DrawCircleV(collision.point, 8.f, RED);
+    }
+
+    DrawLineV(laser.position, end, LIGHTGRAY);
 }

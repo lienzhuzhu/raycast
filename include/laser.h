@@ -9,6 +9,7 @@
 
 
 #include <raylib.h>
+#include "wall.h"
 
 
 typedef struct Laser {
@@ -24,7 +25,7 @@ typedef struct LaserCollision {
 } LaserCollision;
 
 void update_laser(Laser *laser, Vector2 position);
-void draw_laser(Laser laser);
+void draw_laser(Laser laser, Wall wall);
 
 
 #endif // !LASER_H
