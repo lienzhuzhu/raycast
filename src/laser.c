@@ -33,7 +33,8 @@ void draw_laser(Laser laser, Wall wall)
 
     if (collision.hit) {
         DrawCircleV(collision.point, 8.f, RED);
+        DrawLineV(laser.position, collision.point, RED);
+    } else {
+        DrawLineV(laser.position, end, LIGHTGRAY);
     }
-
-    DrawLineV(laser.position, end, LIGHTGRAY);
 }
