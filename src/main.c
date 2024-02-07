@@ -56,7 +56,7 @@ int main(void)
 
         BeginDrawing();
 
-            ClearBackground(BLACK);
+            ClearBackground(RAYWHITE);
 
             draw_guides();
             draw_wall(w);
