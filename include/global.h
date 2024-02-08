@@ -21,7 +21,8 @@
 #define SCREEN_CENTER_Y   GetScreenHeight()/2.f
 
 void draw_guides(void);
-void draw_crosshair(void);
+Vector2 get_crosshair(void);
+void draw_crosshair(Vector2);
 
 
 #endif // !GLOBAL_H

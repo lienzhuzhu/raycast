@@ -12,6 +12,8 @@ LaserCollision get_collision_with_wall(Laser *laser, Wall *wall)
 {
     LaserCollision collision;
 
+    collision.hit = false;
+
     double x1 = wall->start.x;
     double y1 = wall->start.y;
     double x2 = wall->end.x;
@@ -26,6 +28,7 @@ LaserCollision get_collision_with_wall(Laser *laser, Wall *wall)
 
     if (denom == 0) {
         collision.hit = false;
+        return collision;
     } else {
         double t =  ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
         double u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / denom;

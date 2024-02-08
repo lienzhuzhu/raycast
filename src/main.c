@@ -63,7 +63,6 @@ int main(void)
             draw_wall(w);
             draw_lasers(&player, &w);
             draw_player(player);
-            draw_crosshair();
 
         EndDrawing();
     }

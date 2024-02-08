@@ -23,8 +23,13 @@ void draw_guides(void)
     DrawLineV(points[2], points[3], LIGHTGRAY);
 }
 
-void draw_crosshair()
+Vector2 get_crosshair()
 {
-    Vector2 target = { GetMouseX(), GetMouseY() };
-    DrawCircleV(target, 2.f, RED);
+    Vector2 crosshair = { GetMouseX(), GetMouseY() };
+    return crosshair;
+}
+
+void draw_crosshair(Vector2 crosshair)
+{
+    DrawCircleV(crosshair, 2.f, RED);
 }

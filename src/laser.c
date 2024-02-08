@@ -10,6 +10,7 @@
 
 #include "laser.h"
 #include "checks.h"
+#include "global.h"
 
 
 void update_laser(Laser *laser, Vector2 position)
@@ -38,7 +39,8 @@ void draw_laser(Laser laser, Wall wall)
         printf("%f\n", collision.distance);
     } else {
         //DrawLineV(laser.position, end, LIGHTGRAY);
-        Vector2 crosshair = { GetMouseX(), GetMouseY() };
+        Vector2 crosshair = get_crosshair();
         DrawLineV(laser.position, crosshair, LIGHTGRAY);
+        draw_crosshair(crosshair);
     }
 }
