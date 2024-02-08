@@ -6,6 +6,7 @@
 
 #include <raylib.h>
 #include <raymath.h>
+#include <stdio.h>
 
 #include "laser.h"
 #include "checks.h"
@@ -34,7 +35,10 @@ void draw_laser(Laser laser, Wall wall)
     if (collision.hit) {
         DrawCircleV(collision.point, 8.f, RED);
         DrawLineV(laser.position, collision.point, RED);
+        printf("%f\n", collision.distance);
     } else {
-        DrawLineV(laser.position, end, LIGHTGRAY);
+        //DrawLineV(laser.position, end, LIGHTGRAY);
+        Vector2 crosshair = { GetMouseX(), GetMouseY() };
+        DrawLineV(laser.position, crosshair, LIGHTGRAY);
     }
 }
