@@ -5,6 +5,7 @@
 
 
 #include "global.h"
+#include "raylib.h"
 
 
 void draw_guides(void)
@@ -33,3 +34,8 @@ void draw_guides(void)
     DrawLineV(points[2], points[3], LIGHTGRAY);
 }
 
+void draw_crosshair()
+{
+    Vector2 target = { GetMouseX(), GetMouseY() };
+    DrawCircleV(target, 2.f, RED);
+}

@@ -26,8 +26,8 @@ void update_laser(Laser *laser, Vector2 position)
 void draw_laser(Laser laser, Wall wall)
 {
     Vector2 end = {
-        .x = laser.position.x + laser.direction.x * 50,
-        .y = laser.position.y + laser.direction.y * 50
+        .x = laser.position.x + laser.direction.x,
+        .y = laser.position.y + laser.direction.y
     };
     LaserCollision collision = get_collision_with_wall(&laser, &wall);
 

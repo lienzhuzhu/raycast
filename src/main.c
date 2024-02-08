@@ -6,6 +6,7 @@
 
 #include "player.h"
 #include "global.h"
+#include "raylib.h"
 #include "wall.h"
 #include <time.h> // Include for clock_gettime
 
@@ -62,6 +63,7 @@ int main(void)
             draw_wall(w);
             draw_lasers(&player, &w);
             draw_player(player);
+            draw_crosshair();
 
         EndDrawing();
     }
