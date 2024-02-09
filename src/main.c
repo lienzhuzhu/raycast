@@ -1,5 +1,5 @@
 /*
- * Driver code for raycast program
+ * Driver code for collision detection demo.
  * Lien Zhu
  */
 
@@ -14,7 +14,7 @@
 int main(void)
 {
     SetTraceLogLevel(LOG_WARNING);
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Raycasting");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Collision Detection");
     HideCursor();
 
     double dt = 1.f / TARGET_FPS;
