@@ -38,7 +38,6 @@ void draw_laser(Laser laser, Wall wall)
         DrawLineV(laser.position, collision.point, RED);
         printf("%f\n", collision.distance);
     } else {
-        //DrawLineV(laser.position, end, LIGHTGRAY);
         Vector2 crosshair = get_crosshair();
         DrawLineV(laser.position, crosshair, LIGHTGRAY);
         draw_crosshair(crosshair);

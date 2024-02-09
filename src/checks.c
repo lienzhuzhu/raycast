@@ -37,7 +37,7 @@ LaserCollision get_collision_with_wall(Laser *laser, Wall *wall)
             collision.hit = true;
             collision.point.x = x1 + t * (x2 - x1);
             collision.point.y = y1 + t * (y2 - y1);
-            collision.distance = sqrt((collision.point.x - laser->position.x) * (collision.point.x - laser->position.x) + (collision.point.y - laser->position.y) + (collision.point.y - laser->position.y));
+            collision.distance = sqrt((collision.point.x - laser->position.x) * (collision.point.x - laser->position.x) + (collision.point.y - laser->position.y) * (collision.point.y - laser->position.y));
         }
     }
 
