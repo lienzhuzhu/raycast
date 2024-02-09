@@ -34,8 +34,8 @@ void draw_laser(Laser laser, Wall wall)
     LaserCollision collision = get_collision_with_wall(&laser, &wall);
 
     if (collision.hit) {
-        DrawCircleV(collision.point, 8.f, RED);
         DrawLineV(laser.position, collision.point, RED);
+        DrawCircleV(collision.point, 6.f, BLACK);
         printf("%f\n", collision.distance);
     } else {
         Vector2 crosshair = get_crosshair();
