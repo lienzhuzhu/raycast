@@ -24,5 +24,10 @@ void draw_guides(void);
 Vector2 get_crosshair(void);
 void draw_crosshair(Vector2);
 
+typedef struct Line {
+    Vector2 start;
+    Vector2 end;
+} Line;
+
 
 #endif // !GLOBAL_H
