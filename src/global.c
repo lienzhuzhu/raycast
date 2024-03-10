@@ -8,6 +8,11 @@
 #include "raylib.h"
 
 
+void draw_line(Line line, Color color)
+{
+    DrawLineV(line.start, line.end, color);
+}
+
 void draw_guides(void)
 {
     Vector2 points[4] = {
@@ -17,10 +22,30 @@ void draw_guides(void)
         {SCREEN_CENTER_X + SCREEN_CENTER_X / 2.f, SCREEN_CENTER_Y + SCREEN_CENTER_Y / 2.f},
     };
 
-    DrawLineV(points[0], points[1], LIGHTGRAY);
-    DrawLineV(points[0], points[2], LIGHTGRAY);
-    DrawLineV(points[1], points[3], LIGHTGRAY);
-    DrawLineV(points[2], points[3], LIGHTGRAY);
+    Line top = {
+        .start = points[0],
+        .end = points[1]
+    };
+
+    Line left = {
+        .start = points[0],
+        .end = points[2]
+    };
+
+    Line right = {
+        .start = points[1],
+        .end = points[3]
+    };
+
+    Line bottom = {
+        .start = points[2],
+        .end = points[3]
+    };
+
+    draw_line(top, LIGHTGRAY);
+    draw_line(left, LIGHTGRAY);
+    draw_line(right, LIGHTGRAY);
+    draw_line(bottom, LIGHTGRAY);
 }
 
 Vector2 get_crosshair()

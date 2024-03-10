@@ -26,7 +26,7 @@ int main(void)
     Player player;
     init_player(&player);
 
-    Wall w = {
+    Wall wall = {
         .start = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y - 100},
         .end = {SCREEN_CENTER_X + 120, SCREEN_CENTER_Y + 80},
         .thiccness = 6.f,
@@ -60,8 +60,8 @@ int main(void)
             ClearBackground(RAYWHITE);
 
             draw_guides();
-            draw_wall(w);
-            draw_lasers(&player, &w);
+            draw_wall(wall);
+            draw_lasers(&player, &wall);
             draw_player(player);
 
         EndDrawing();
