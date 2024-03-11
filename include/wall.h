@@ -9,6 +9,7 @@
 
 
 #include <raylib.h>
+#include "global.h"
 
 
 typedef struct Wall {
@@ -20,6 +21,7 @@ typedef struct Wall {
 
 void update_wall(Wall *wall);
 void draw_wall(Wall wall);
+void draw_guides(void);
 
 
 #endif // !WALL_H

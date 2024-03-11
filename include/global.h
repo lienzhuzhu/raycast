@@ -21,13 +21,6 @@
 #define SCREEN_CENTER_Y   GetScreenHeight()/2.f
 
 
-typedef struct Line {
-    Vector2 start;
-    Vector2 end;
-} Line;
-
-void draw_line(Line, Color);
-void draw_guides(void);
 Vector2 get_crosshair(void);
 void draw_crosshair(Vector2);
 
