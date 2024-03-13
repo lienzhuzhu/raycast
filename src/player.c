@@ -74,10 +74,10 @@ void update_lasers(Player *player)
     update_laser(player->lasers, player->position);
 }
 
-void draw_lasers(Player *player, Wall *wall)
+void draw_lasers(Player *player, Wall *world)
 {
     Laser laser = *(player->lasers);
-    draw_laser(laser, *wall);
+    draw_laser(laser, world);
 }
 
 void delete_player(Player *player)

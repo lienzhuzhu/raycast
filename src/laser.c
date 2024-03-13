@@ -25,13 +25,13 @@ void update_laser(Laser *laser, Vector2 position)
     laser->direction = Vector2Normalize(direction);
 }
 
-void draw_laser(Laser laser, Wall wall)
+void draw_laser(Laser laser, Wall *world)
 {
     Vector2 end = {
         .x = laser.position.x + laser.direction.x,
         .y = laser.position.y + laser.direction.y
     };
-    LaserCollision collision = get_collision_with_wall(&laser, &wall);
+    LaserCollision collision = get_collision_with_wall(&laser, &world[0]);
 
     if (collision.hit) {
         DrawLineV(laser.position, collision.point, RED);

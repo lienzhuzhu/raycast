@@ -25,7 +25,7 @@ typedef struct LaserCollision {
 } LaserCollision;
 
 void update_laser(Laser *laser, Vector2 position);
-void draw_laser(Laser laser, Wall wall);
+void draw_laser(Laser laser, Wall *world);
 
 
 #endif // !LASER_H

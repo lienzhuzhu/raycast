@@ -22,16 +22,21 @@ int main(void)
     clock_gettime(CLOCK_MONOTONIC, &prev_time_point); // Get current time
     double accumulator = 0.0;
 
-
-    Player player;
-    init_player(&player);
-
+    int num_walls = 0;
     Wall wall = {
         .start = {SCREEN_CENTER_X + 100, SCREEN_CENTER_Y - 100},
         .end = {SCREEN_CENTER_X + 120, SCREEN_CENTER_Y + 80},
         .thiccness = 6.f,
         .color = LIGHTGRAY
     };
+    ++num_walls;
+
+
+    Player player;
+    init_player(&player);
+
+    Wall world[NUM_WORLD_WALLS + num_walls];
+    world[0] = wall;
 
 
     while (!WindowShouldClose())
@@ -61,7 +66,7 @@ int main(void)
 
             draw_guides();
             draw_wall(wall);
-            draw_lasers(&player, &wall);
+            draw_lasers(&player, world);
             draw_player(player);
 
         EndDrawing();
