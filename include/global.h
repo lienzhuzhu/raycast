@@ -8,7 +8,7 @@
 #define GLOBAL_H
 
 
-#include <raylib/raylib.h>
+#include <raylib.h>
 
 
 #define SCREEN_WIDTH        800
