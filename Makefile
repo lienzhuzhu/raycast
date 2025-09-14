@@ -1,7 +1,7 @@
 # Compiler settings
 CC = gcc
 CFLAGS = -std=c11 -MMD -MP
-CPPFLAGS = -Iinclude
+CPPFLAGS = -Iinclude -I/opt/homebrew/Cellar/raylib/5.5/include
 LDFLAGS = -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL -L/opt/homebrew/Cellar/raylib/5.5/lib -lraylib
 
 # Directories
